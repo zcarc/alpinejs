@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data="{ message: '' }">
+      <input type="text" x-model="message" />
+      <span x-text="message"></span>
+      <button x-on:click="message = 'changed'">Change message</button>
+    </div>
+
+    <div x-data="{show: true}">
+      <input type="checkbox" id="checkbox" x-model="show" />
+      <label for="checkbox" x-text="show"></label>
+    </div>
+
+    <div x-data="{answer: ''}">
+      <input type="radio" x-model="answer" value="yes" />
+      <input type="radio" x-model="answer" value="no" />
+      Answer: <span x-text="answer"></span>
+    </div>
+
+    <div x-data="{color: ''}">
+      <select x-model="color">
+        <option>Red</option>
+        <option>Orange</option>
+        <option>Yellow</option>
+      </select>
+      Color: <span x-text="color"></span>
+    </div>
+  </body>
+</html>

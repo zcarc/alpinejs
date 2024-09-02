@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <h3>포커스에서 벗어나면 출력</h3>
+    <div x-data="{username: ''}">
+      <input type="text" x-model.lazy="username" />
+      <span x-text="username"></span>
+      <div x-show="username.length > 10">이름이 너무 깁니다.</div>
+    </div>
+
+    <h3>문자열 타입</h3>
+    <div x-data="{num: ''}">
+      <input type="text" x-model="num" />
+      <span x-text="typeof num"></span>
+    </div>
+
+    <h3>문자열 덧셈</h3>
+    <div x-data="{x: '', y: ''}">
+      <input type="text" x-model="x" />
+      <input type="text" x-model="y" />
+      <span x-text="x + y"></span>
+    </div>
+
+    <h3>숫자 덧셈</h3>
+    <div x-data="{x: '', y: ''}">
+      <input type="text" x-model.number="x" />
+      <input type="text" x-model.number="y" />
+      <span x-text="x + y"></span>
+    </div>
+
+    <!-- x-model은 기본적으로 string으로 데이터를 저장한다. -->
+    <h3>boolean</h3>
+    <div x-data="{isActive: ''}">
+      <select x-model.boolean="isActive">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+      <div>value: <span x-text="isActive"></span></div>
+      <div>typeof: <span x-text="typeof isActive"></span></div>
+    </div>
+
+    <h3>debounce</h3>
+    <div x-data="{message: ''}">
+      <input type="text" x-model.debounce.500="message" />
+      <div x-text="message"></div>
+    </div>
+
+    <h3>throttle</h3>
+    <div x-data="{message: ''}">
+      <input type="text" x-model.throttle.500="message" />
+      <div x-text="message"></div>
+    </div>
+  </body>
+</html>

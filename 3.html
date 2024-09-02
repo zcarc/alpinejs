@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div x-data="{ name: 'kildong', age: 25}">
+        <div>Name : <b x-text="name"></b></div>
+        <div>Age : <b x-text="age"></b></div>
+    </div>
+
+    <div x-data="{ nickname: 'Dragon' }">
+        Nickname : <b x-text="nickname"></b>
+    </div>
+</body>
+</html> 

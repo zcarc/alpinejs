@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 같은 이름이면 name-1, name-2 이런식으로 증가 -->
+    <div x-data>
+      <input type="text" :id="$id('aaa')" />
+      <input type="text" :id="$id('aaa')" />
+      <input type="text" :id="$id('aaa')" />
+      <input type="text" :id="$id('aaa')" />
+      <input type="text" :id="$id('aaa')" />
+    </div>
+
+    <button onclick="document.getElementById('aaa-3').value='ok'">클릭</button>
+
+    <!-- 그룹핑 1 -->
+    <!-- 그룹핑 사용하면 같은 이름이 다음에 나와도 증가하지 않고 같은 id로 설정 -->
+    <div x-data>
+      <div x-id="['text-input']">
+        <label :for="$id('text-input')">input 1</label>
+        <input type="text" :id="$id('text-input')" />
+      </div>
+
+      <div x-id="['text-input']">
+        <label :for="$id('text-input')">input 2</label>
+        <input type="text" :id="$id('text-input')" />
+      </div>
+    </div>
+
+    <!-- 그룹핑 2 -->
+    <div x-data>
+      <div x-id="['text-input']">
+        <label :for="$id('text-input')">input 3</label>
+        <input type="text" :id="$id('text-input')" />
+
+        <div x-id="['text-input']">
+          <label :for="$id('text-input')">input 4</label>
+          <input type="text" :id="$id('text-input')" />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

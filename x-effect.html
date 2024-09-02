@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data="{label: 'Hello'}" x-effect="console.log(label)">
+      <button @click="label += ' World'">Change Message!</button>
+    </div>
+
+    <div
+      x-data="{label: 'Hello', other: ''}"
+      x-effect="console.log(label + ' ' + other)"
+    >
+      <button @click="label += ' World'">Change Message!</button>
+      <button @click="other += ' !!'">Change Other!</button>
+    </div>
+  </body>
+</html>
