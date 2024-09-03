@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+    <script src="./data_1.js"></script>
+  </head>
+  <body>
+    <div x-data="dropdown">
+      <button @click="toggle">Toggle</button>
+      <div x-show="open">......</div>
+    </div>
+
+    <!-- x-if는 노드를 삭제하기 때문에 dropdown이 연결된 data의 destroy가 호출된다. -->
+    <div x-data="{enabled: false}">
+      <button @click="enabled = !enabled">Include Destroy Toggle</button>
+
+      <template x-if="enabled">
+        <span x-data="dropdown"></span>
+      </template>
+    </div>
+  </body>
+</html>

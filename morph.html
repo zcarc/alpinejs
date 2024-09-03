@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/morph@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <button id="btn">Click</button>
+
+    <div x-data="{message: 'Change me'}">
+      <input type="text" x-model="message" />
+      <span x-text="message"></span>
+    </div>
+
+    <script>
+      const btn = document.getElementById("btn");
+
+      btn.addEventListener("click", function () {
+        const el = document.querySelector("div");
+        Alpine.morph(el, "<p>1</p>");
+      });
+    </script>
+  </body>
+</html>

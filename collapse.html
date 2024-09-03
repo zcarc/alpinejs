@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <h2>x-collapse</h2>
+    <!-- 
+    x-collapse는 엘리먼트를 접거나 펼 때 (보여거나 보여주지 않을 때)
+    이 전환하는 시스템에서 부드러운 애니메이션을 부여한다.
+    x-show 지시어가 있는 엘리먼트에서만 동작한다. 
+    -->
+    <div x-data="{ expanded: false }">
+      <button @click="expanded = !expanded">Toggle Content</button>
+
+      <p x-show="expanded" x-collapse.min.50px>
+        Reprehenderit eu excepteur ullamco esse cillum reprehenderit
+        exercitation labore non. Dolore dolore ea dolore veniam sint in sint ex
+        Lorem ipsum. Sint laborum deserunt deserunt amet voluptate cillum
+        deserunt. Amet nisi pariatur sit ut id. Ipsum est minim est commodo id
+        dolor sint id quis sint Lorem.
+      </p>
+    </div>
+
+    <!-- Modifiers -->
+    <h3>Modifiers</h3>
+    <h4>.duration</h4>
+    <div x-data="{ expanded: false }">
+      <button @click="expanded = ! expanded">Toggle Content</button>
+
+      <p x-show="expanded" x-collapse.duration.1000ms>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+        deserunt consequuntur hic laborum. Nulla quibusdam sequi sint harum
+        veritatis repellat, aut atque beatae labore, enim temporibus nostrum
+        aliquam doloremque earum! Delectus distinctio perferendis eaque, a nam
+        quas enim labore cupiditate atque numquam optio pariatur quo iusto, sed
+        aliquid sequi fuga aspernatur magni dolorum. Sed dignissimos, suscipit
+        aliquam esse quae nostrum! Repellendus culpa sit, dolores excepturi
+        blanditiis, velit possimus ab repudiandae aut nihil porro esse officia
+        facilis! Facilis ab minus, corrupti mollitia nostrum aperiam, earum aut
+        voluptate commodi nobis blanditiis quas.
+      </p>
+    </div>
+
+    <h4>.min</h4>
+    <div x-data="{ expanded: false }">
+      <button @click="expanded = ! expanded">Toggle Content</button>
+
+      <p x-show="expanded" x-collapse.min.50px>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+        deserunt consequuntur hic laborum. Nulla quibusdam sequi sint harum
+        veritatis repellat, aut atque beatae labore, enim temporibus nostrum
+        aliquam doloremque earum! Delectus distinctio perferendis eaque, a nam
+        quas enim labore cupiditate atque numquam optio pariatur quo iusto, sed
+        aliquid sequi fuga aspernatur magni dolorum. Sed dignissimos, suscipit
+        aliquam esse quae nostrum! Repellendus culpa sit, dolores excepturi
+        blanditiis, velit possimus ab repudiandae aut nihil porro esse officia
+        facilis! Facilis ab minus, corrupti mollitia nostrum aperiam, earum aut
+        voluptate commodi nobis blanditiis quas.
+      </p>
+    </div>
+  </body>
+</html>

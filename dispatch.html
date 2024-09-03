@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data>
+      <div @notify2="alert('Hello World')">
+        <button @click="$dispatch('notify2')">Notify</button>
+      </div>
+    </div>
+
+    <div x-data>
+      <div @aaa="alert($event.detail.message)">
+        <button @click="$dispatch('aaa', {message: 'clicked aaa'})">aaa</button>
+      </div>
+    </div>
+
+    <div x-data>
+      <div @bbb="alert($event.detail.message)"></div>
+      <button @click="$dispatch('bbb', {message: 'clicked bbb'})">bbb</button>
+    </div>
+
+    <!-- 다른 컴포넌트에 dispatching -->
+    <div x-data="{title: 'Hello'}" @set-title.window="title = $event.detail">
+      <h1 x-text="title"></h1>
+    </div>
+
+    <div x-data>
+      <button @click="$dispatch('set-title', 'Hello World!!!')">
+        Click me
+      </button>
+    </div>
+
+    <br /><br />
+
+    <!-- x-model에 dispatching -->
+    <!-- 여기서 input으로 설정해야만 보낼 수 있다.-->
+    <div x-data="{title: 'Hello'}">
+      <span x-model="title">
+        <button @click="$dispatch('input', 'Hello WWorld!')">ClickK me</button>
+      </span>
+      <div x-text="title"></div>
+    </div>
+
+    <br /><br />
+
+    <div
+      x-data="{title: 'Hello'}"
+      x-init="$watch('title', value => console.log(value))"
+    >
+      <span x-model="title">
+        <button @click="$dispatch('input', 'Hello WWorld!')">ClickK me</button>
+      </span>
+    </div>
+  </body>
+</html>

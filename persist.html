@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data="{count: $persist(0)}">
+      <button @click="count++">Increment</button>
+      <span x-text="count"></span>
+    </div>
+
+    <!-- 로컬스토리지 key 값 커스텀 -->
+    <div x-data="{count: $persist(0).as('other-count')}">
+      <button @click="count++">Increment</button>
+      <span x-text="count"></span>
+    </div>
+
+    <!-- 세션스토리지에 저장 -->
+    <div x-data="{count: $persist(0).using(sessionStorage)}">
+      <button @click="count++">Increment</button>
+      <span x-text="count"></span>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 이 부분 로그의 값은 데이터가 변경되기 전 로그가 출력된다. -->
+    <div x-data="{title: 'Hello'}">
+      <button
+        @click="
+    title='hello world!';
+    console.log($el.innerText);
+    "
+        x-text="title"
+      ></button>
+    </div>
+
+    <br /><br />
+
+    <!-- $nexTick 매직을 사용하면 DOM 이 로딩된 후에 호출된다. -->
+    <!-- 방법 1. -->
+    <div x-data="{title: 'Hello'}">
+      <button
+        @click="
+      title='hello world!';
+      $nextTick(() => {console.log($el.innerText)});
+      "
+        x-text="title"
+      ></button>
+    </div>
+
+    <br /><br />
+
+    <!-- 방법 2. -->
+    <div x-data="{title: 'Hello'}">
+      <button
+        @click="
+        title='hello world!';
+        await  $nextTick();
+        console.log($el.innerText);
+        "
+        x-text="title"
+      ></button>
+    </div>
+  </body>
+</html>

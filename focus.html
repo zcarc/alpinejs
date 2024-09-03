@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- x-trap -->
+    <h3>x-trap</h3>
+    <div x-data="{ open: false }">
+      <button @click="open = true">Open Dialog</button>
+
+      <span x-show="open" x-trap="open">
+        <p>...</p>
+
+        <input type="text" placeholder="Some input..." />
+
+        <input type="text" placeholder="Some other input..." />
+
+        <button @click="open = false">Close Dialog</button>
+      </span>
+    </div>
+    <br /><br />
+
+    <!-- Nesting dialogs -->
+    <h3>Nesting dialogs</h3>
+    <div x-data="{ open: false }">
+      <div>
+        <button x-on:click="open = true">Open Dialog</button>
+      </div>
+
+      <div x-show="open" x-trap="open">
+        <div>
+          <input type="text" placeholder="Some input..." />
+        </div>
+
+        <div>
+          <input type="text" placeholder="Some other input..." />
+        </div>
+
+        <div x-data="{ open: false }">
+          <div>
+            <button x-on:click="open = true">Open Nested Dialog</button>
+          </div>
+
+          <div x-show="open" x-trap="open">
+            <strong>
+              <div>
+                Focus is now "trapped" inside this nested dialog. You cannot
+                focus anything inside the outer dialog while this is open. If
+                you close this dialog, focus will be returned to the last known
+                active element.
+              </div>
+            </strong>
+
+            <div>
+              <input type="text" placeholder="Some input..." />
+            </div>
+
+            <div>
+              <input type="text" placeholder="Some other input..." />
+            </div>
+
+            <div>
+              <button @click="open = false">Close Nested Dialog</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button @click="open = false">Close Dialog</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

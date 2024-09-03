@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/mask@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- x-mask -->
+    <div x-data>
+      <input x-mask="99/99/9999" placeholder="MM/DD/YYYY" />
+      <input x-mask="aa/aa/aaaa" placeholder="AA/AA/AAAA" />
+      <input x-mask="99/AA/****" placeholder="MM/AA/****" />
+      <br /><br />
+
+      <!-- Dynamic Masks -->
+      <input
+        x-mask:dynamic="
+    $input.startsWith('34') || $input.startsWith('37')
+        ? '9999 999999 99999' : '9999 9999 9999 9999'"
+      />
+      <br /><br />
+
+      <!-- function  -->
+      <input x-mask:dynamic="creditCardMask" />
+      <br /><br />
+
+      <!-- Money Inputs -->
+      <input x-mask:dynamic="$money($input)" />
+      <br /><br />
+
+      <!-- If you wish to swap the periods for commas and vice versa (as is required in certain currencies), you can do so using the second optional parameter: -->
+      <input x-mask:dynamic="$money($input, ',')" />
+      <br /><br />
+
+      <!-- You may also choose to override the thousands separator by supplying a third optional argument: -->
+      <input x-mask:dynamic="$money($input, '.', ' ')" />
+      <br /><br />
+
+      <!-- You can also override the default precision of 2 digits by using any desired number of digits as the fourth optional argument: -->
+      <input x-mask:dynamic="$money($input, '.', ',', 3)" />
+    </div>
+    <script>
+      function creditCardMask(input) {
+        return input.startsWith("34") || input.startsWith("37")
+          ? "9999 999999 99999"
+          : "9999 9999 9999 9999";
+      }
+    </script>
+  </body>
+</html>

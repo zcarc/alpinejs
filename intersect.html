@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!--한번: 보여지면  true -->
+    <div
+      class="demo"
+      style="height: 60px; overflow-y: scroll"
+      x-data=""
+      x-ref="root"
+    >
+      <a
+        href="#"
+        @click="$refs.root.scrollTo({ top: $refs.root.scrollHeight, behavior: 'smooth' })"
+        >Scroll Down 👇</a
+      >
+      <div style="height: 50vh"></div>
+      <div x-data="{ shown: false }" x-intersect="shown = true" id="yoyo">
+        <div x-show="shown" x-transition.duration.1000ms="">
+          I'm in the viewport!
+        </div>
+        <div x-show="!shown" style="display: none">&nbsp;</div>
+      </div>
+    </div>
+
+    <!--반복: 보여지면 true, 보여지지 않으면 false  -->
+    <div
+      class="demo"
+      style="height: 60px; overflow-y: scroll"
+      x-data=""
+      x-ref="root"
+    >
+      <a
+        href="#"
+        @click="$refs.root.scrollTo({ top: $refs.root.scrollHeight, behavior: 'smooth' })"
+        >Scroll Down 👇</a
+      >
+      <div style="height: 50vh"></div>
+      <div
+        x-data="{ shown: false }"
+        x-intersect:enter="shown = true"
+        x-intersect:leave="shown = false"
+        id="yoyo"
+      >
+        <div x-show="shown" x-transition.duration.1000ms="">
+          I'm in the viewport!
+        </div>
+        <div x-show="!shown" style="display: none">&nbsp;</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <!-- Alpine Core -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 
+    input에 값을 입력하고 tab을 누르면 search 누르면 결과가 나온다
+    결과에서 보여지는 close 버튼을 누르고 나면 search가 focus가 되는데
+    noreturn를 추가하면 focus가 return 되지 않아서 search에 focus 되지 않는다.
+    -->
+    <div x-data="{ open: false }" x-trap.noreturn="open">
+      <input type="search" placeholder="search for something" />
+      <button @click="open = true">Search</button>
+
+      <div x-show="open">
+        <div>Search results</div>
+
+        <p>
+          Notice when closing this dropdown, focus is not returned to the input.
+        </p>
+
+        <button @click="open = false">Close Dialog</button>
+      </div>
+    </div>
+  </body>
+</html>
